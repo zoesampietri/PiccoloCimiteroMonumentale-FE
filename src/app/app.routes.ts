@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import {SampleEntitiesComponent} from './component/sample-entities/sample-entities.component';
+import {DefuntoEntitiesComponent} from './component/defunto-entities/defunto-entities.component';
 
 export const routes: Routes = [
-  { path: 'sample-entities', component: SampleEntitiesComponent }
+  { path: 'defunto-entities', component: DefuntoEntitiesComponent }
 ];
 
