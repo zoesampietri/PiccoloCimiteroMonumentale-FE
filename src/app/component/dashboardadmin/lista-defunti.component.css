@@ -1,0 +1,55 @@
+/* Stile generale della tabella */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header elegante */
+th {
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+}
+
+/* Celle con più "aria" */
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+/* Colonna ID rimpicciolita */
+.col-id {
+  font-family: monospace;
+  color: #888;
+  font-size: 0.9em;
+  width: 100px;
+}
+
+/* Colonna Azioni allargata */
+.col-action {
+  width: 200px;
+  display: flex;
+  gap: 8px; /* Spazio tra i pulsanti */
+}
+
+/* Stile base pulsanti */
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.btn-edit { background-color: #007bff; color: white; }
+.btn-edit:hover { background-color: #0056b3; }
+
+.btn-delete { background-color: #dc3545; color: white; }
+.btn-delete:hover { background-color: #a71d2a; }
+
+tr:hover { background-color: #f1f1f1; }

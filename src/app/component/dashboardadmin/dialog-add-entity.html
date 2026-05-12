@@ -1,0 +1,93 @@
+<div class="dialog-overlay"> <!-- Sfondo oscurato -->
+  <div class="dialog-container">
+    <h2>Registrazione di un nuovo defunto</h2>
+
+    <div class="dialog-content form-grid"> <!-- Griglia aggiunta qui -->
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="nome" placeholder="Mario" />
+      </div>
+
+      <div class="form-group">
+        <label>Cognome</label>
+        <input type="text" [(ngModel)]="cognome" placeholder="Rossi" />
+      </div>
+
+      <div class="form-group">
+        <label>Codice fiscale</label>
+        <input type="text" [(ngModel)]="codiceFiscale" placeholder="RSSMRA85A01H501D" />
+      </div>
+
+      <div class="form-group">
+        <label>Sesso</label>
+        <input type="text" [(ngModel)]="sesso" placeholder="M/F" />
+      </div>
+
+       <div class="form-group">
+        <label>Data di nascita Defunto</label>
+        <input type="text" [(ngModel)]="dataNascita" placeholder="GG/MM/AAAA" />
+      </div>
+
+      <div class="form-group">
+        <label>Data di decesso Defunto</label>
+        <input type="text" [(ngModel)]="dataMorte" placeholder="GG/MM/AAAA" />
+      </div>
+
+      <div class="form-group">
+        <label>Luogo di decesso Defunto</label>
+        <input type="text" [(ngModel)]="luogoMorte" placeholder="Roma" />
+      </div>
+
+      <div class="form-group">
+        <label>Luogo di nascita Defunto</label>
+        <input type="text" [(ngModel)]="luogoNascita" placeholder="Roma" />
+      </div>
+
+      <div class="form-group">
+        <label>Stato Civile Defunto</label>
+        <input type="text" [(ngModel)]="statoCivile" placeholder="Celibe/Coniugato/Divorziato" />
+      </div>
+
+      <div class="form-group">
+        <label>Causa Morte Defunto</label>
+        <input type="text" [(ngModel)]="causaMorte" placeholder="" />
+      </div>
+
+      <div class="form-group">
+        <label>Indirizzo Defunto</label>
+        <input type="text" [(ngModel)]="indirizzoUltimaResidenza" placeholder="via del Corso, 1" />
+      </div>
+
+      <div class="form-group full-width"> <!-- Per campi lunghi come l'Epitaffio -->
+        <label>Epitaffio</label>
+        <textarea [(ngModel)]="epitaffio" placeholder="Inserisci epitaffio"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Settore Defunto</label>
+        <input type="text" [(ngModel)]="settore" placeholder="" />
+      </div>
+
+      <div class="form-group">
+        <label>Id sepoltura Defunto</label>
+        <input type="text" [(ngModel)]="idsepoltura" placeholder="" />
+      </div>
+
+      <div class="form-group">
+        <label>Data sepoltura Defunto</label>
+        <input type="text" [(ngModel)]="dataSepoltura" placeholder="GG/MM/AAAA" />
+      </div>
+
+      <div class="form-group">
+        <label>Amministratore Defunto</label>
+        <input type="text" [(ngModel)]="amministratore" placeholder="Id Amministratore"/>
+      </div>
+    </div>
+      
+
+    <div class="dialog-actions">
+      <button type="button" class="btn-cancel" (click)="onNoClick()">Annulla</button>
+      <button type="button" class="btn-save" (click)="save()">Salva Defunto</button>
+    </div>
+  </div>
+</div>

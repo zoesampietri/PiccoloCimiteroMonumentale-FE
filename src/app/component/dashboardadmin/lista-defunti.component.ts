@@ -1,52 +1,26 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell, MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef,
-  MatRow, MatRowDef,
-  MatTable
-} from '@angular/material/table';
+import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import {DefuntoEntity} from '../../modelli/defunto-entity.model';
 import {DefuntoEntityService} from '../../service/defunto-entity.service';
-import {lastValueFrom} from 'rxjs';
-import {
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle
-} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import {MatButton, MatButtonModule} from '@angular/material/button';
+import { lastValueFrom } from 'rxjs';
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-defunto-entities',
+  selector: 'app-lista-defunti',
+  standalone: true,
   imports: [
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatCell,
-    MatHeaderRow,
-    MatRow,
-    MatCellDef,
-    MatHeaderCellDef,
-    MatHeaderRowDef,
-    MatRowDef,
-    MatButton
+    CommonModule,
+    FormsModule 
   ],
-  templateUrl: './defunto-entities.component.html',
-  styleUrl: './defunto-entities.component.css'
+  templateUrl: './lista-defunti.component.html',
+  styleUrl: './lista-defunti.component.css'
 })
 export class DefuntoEntitiesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'codicefiscale', 'nome', 'cognome', 'sesso','action'];
   dataSource: DefuntoEntity[]=[];
-  readonly dialog = inject(MatDialog);
-
+  readonly dialog = inject(Dialog);
 
   constructor(private defuntoEntityService: DefuntoEntityService) {}
 
@@ -55,23 +29,23 @@ export class DefuntoEntitiesComponent implements OnInit {
   }
 
   async loadSampleEntities(): Promise<void> {
-    this.dataSource=await lastValueFrom(this.defuntoEntityService.getAll());
+    this.dataSource=await lastValueFrom(this.defuntoEntityService.getAllDefunti());
     console.log(this.dataSource);
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddEntity, {});
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.closed.subscribe(result => {
       console.log('The dialog was closed');
       this.loadSampleEntities().then(r => {
-        console.log('Sample entities reloaded');
+        console.log('Lista defunti reloaded');
       });
     });
   }
 
   async deleteItem(id: string): Promise<void> {
-    await lastValueFrom(this.defuntoEntityService.delete(id));
+    await lastValueFrom(this.defuntoEntityService.deleteDefunto(id));
     await this.loadSampleEntities();
   }
 }
@@ -80,19 +54,13 @@ export class DefuntoEntitiesComponent implements OnInit {
   {
     selector: 'dialog-add-entity',
     templateUrl: './dialog-add-entity.html',
-    imports: [
-      MatFormFieldModule,
-      MatInputModule,
-      FormsModule,
-      MatButtonModule,
-      MatDialogTitle,
-      MatDialogContent,
-      MatDialogActions
-    ]
+    styleUrl: './dialog-add-entity.css',
+    standalone: true,
+    imports: [CommonModule, FormsModule]
   }
 )
 export class DialogAddEntity{
-  readonly dialogRef = inject(MatDialogRef<DialogAddEntity>);
+  readonly dialogRef = inject(DialogRef<DialogAddEntity>);
   nome: string='';
   cognome: string='';
   sesso: string='';
@@ -135,7 +103,7 @@ export class DialogAddEntity{
     entity.dataSepoltura = this.dataSepoltura;
     entity.amministratore = this.amministratore;
 
-    await lastValueFrom(this.defuntoEntityService.create(entity));
+    await lastValueFrom(this.defuntoEntityService.createDefunto(entity));
     this.dialogRef.close();
   }
 }

@@ -1,4 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+/* FONDAMENTALE: Senza questi il footer non rimane in fondo  */
+html, body {
+  height: 100%; /* Assicura che il body occupi tutta l'altezza della finestra */
+  margin: 0;    /* Rimuove i margini di default */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.app-container {    /* Contenitore principale che avvolge tutto il contenuto della pagina -> app.component.html */
+  display: flex;    /*flex serve perchè il footer che è all'intero di app.component.html venga spinto verso il basso gestendolo in automatico */
+  flex-direction: column;
+  min-height: 100vh;  /* Assicura che il contenitore occupi almeno tutta l'altezza della finestra */
+}
+
+.content {
+  flex: 1; /* Spinge il footer verso il basso */
+}
+.main-header {
+  display: flex;
+  justify-content: space-between; /* Spinge gli elementi ai lati opposti */
+  align-items: center;        /* Centra verticalmente logo e link */
+  padding: 1rem 2rem;
+  background-color: #ffffff;  
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Leggera ombra per dare profondità */
+}
+
+.logo {
+  height: 75px;               /* Regola l'altezza in base al tuo SVG */
+  width: auto;
+  display: block;
+}
+
+.admin-link {
+  text-decoration: none;
+  color: #333;                /* Colore del testo */
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.admin-link:hover {
+  background-color: #f5f5f5;  /* Effetto al passaggio del mouse */
+  color: #000;
+}
+
+/* FOOTER - LAYOUT A COLONNE */
+.main-footer {
+  background-color: #04195e;
+  color: white;
+  padding: 40px 0;
+  height:200px;
+}
+
+.footer-content {
+  display: flex; /* Mette le sezioni una di fianco all'altra */
+  justify-content: space-around; /* Distribuisce lo spazio tra le colonne */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column; /* Dispone gli elementi in colonna */
+  gap: 8px;
+  flex: 1; /* Rende le colonne di larghezza uguale */
+}
+
+.white-logo {
+  max-width: 300px;
+  filter: brightness(0) invert(1); /* Trasforma il nero in bianco */
+}

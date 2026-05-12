@@ -1,0 +1,39 @@
+<!-- Bottone sopra la tabella -->
+<button type="button" class="btn-action" (click)="openDialog()">
+  Aggiungi Defunto
+</button>
+
+<!-- Tabella HTML Standard -->
+<table class="custom-table">
+  <thead>
+    <tr>
+      <th>Id.</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Sesso</th>
+      <th>Codice Fiscale</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (element of dataSource; track element.id) {
+      <tr>
+        <td>{{element.id}}</td>
+        <td>{{element.nome}}</td>
+        <td>{{element.cognome}}</td>
+        <td>{{element.sesso}}</td>
+        <td>{{element.codiceFiscale}}</td>
+        <td>
+          <button type="button" (click)="deleteItem(element.id!+'')">
+            Elimina
+          </button>
+
+          <button type="button" >
+            Modifica
+          </button>
+
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
