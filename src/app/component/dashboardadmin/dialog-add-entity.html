@@ -1,93 +1,139 @@
 <div class="dialog-overlay"> <!-- Sfondo oscurato -->
   <div class="dialog-container">
-    <h2>Registrazione di un nuovo defunto</h2>
+    <h2>{{ idDefunto ? 'Modifica Defunto' : 'Registrazione di un nuovo defunto' }}</h2>
 
-    <div class="dialog-content form-grid"> <!-- Griglia aggiunta qui -->
-      <div class="form-group">
-        <label>Nome</label>
-        <input type="text" [(ngModel)]="nome" placeholder="Mario" />
-      </div>
-
-      <div class="form-group">
-        <label>Cognome</label>
-        <input type="text" [(ngModel)]="cognome" placeholder="Rossi" />
-      </div>
-
-      <div class="form-group">
-        <label>Codice fiscale</label>
-        <input type="text" [(ngModel)]="codiceFiscale" placeholder="RSSMRA85A01H501D" />
-      </div>
-
-      <div class="form-group">
-        <label>Sesso</label>
-        <input type="text" [(ngModel)]="sesso" placeholder="M/F" />
-      </div>
-
-       <div class="form-group">
-        <label>Data di nascita Defunto</label>
-        <input type="text" [(ngModel)]="dataNascita" placeholder="GG/MM/AAAA" />
-      </div>
-
-      <div class="form-group">
-        <label>Data di decesso Defunto</label>
-        <input type="text" [(ngModel)]="dataMorte" placeholder="GG/MM/AAAA" />
-      </div>
-
-      <div class="form-group">
-        <label>Luogo di decesso Defunto</label>
-        <input type="text" [(ngModel)]="luogoMorte" placeholder="Roma" />
-      </div>
-
-      <div class="form-group">
-        <label>Luogo di nascita Defunto</label>
-        <input type="text" [(ngModel)]="luogoNascita" placeholder="Roma" />
-      </div>
-
-      <div class="form-group">
-        <label>Stato Civile Defunto</label>
-        <input type="text" [(ngModel)]="statoCivile" placeholder="Celibe/Coniugato/Divorziato" />
-      </div>
-
-      <div class="form-group">
-        <label>Causa Morte Defunto</label>
-        <input type="text" [(ngModel)]="causaMorte" placeholder="" />
-      </div>
-
-      <div class="form-group">
-        <label>Indirizzo Defunto</label>
-        <input type="text" [(ngModel)]="indirizzoUltimaResidenza" placeholder="via del Corso, 1" />
-      </div>
-
-      <div class="form-group full-width"> <!-- Per campi lunghi come l'Epitaffio -->
-        <label>Epitaffio</label>
-        <textarea [(ngModel)]="epitaffio" placeholder="Inserisci epitaffio"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Settore Defunto</label>
-        <input type="text" [(ngModel)]="settore" placeholder="" />
-      </div>
-
-      <div class="form-group">
-        <label>Id sepoltura Defunto</label>
-        <input type="text" [(ngModel)]="idsepoltura" placeholder="" />
-      </div>
-
-      <div class="form-group">
-        <label>Data sepoltura Defunto</label>
-        <input type="text" [(ngModel)]="dataSepoltura" placeholder="GG/MM/AAAA" />
-      </div>
-
-      <div class="form-group">
-        <label>Amministratore Defunto</label>
-        <input type="text" [(ngModel)]="amministratore" placeholder="Id Amministratore"/>
-      </div>
-    </div>
+    <!-- Avvolto tutto nel tag form con riferimento #defuntoForm -->
+    <form #defuntoForm="ngForm" (ngSubmit)="save(defuntoForm)" novalidate>
       
+      <div class="dialog-content form-grid">
+        
+        <!-- Nome (Obbligatorio) -->
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input type="text" id="nome" name="nome" [(ngModel)]="nome" #nomeCtrl="ngModel" placeholder="Mario" required />
+          @if (nomeCtrl.invalid && (nomeCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">Il nome è obbligatorio.</span>
+          }
+        </div>
 
-    <div class="dialog-actions">
-      <button type="button" class="btn-cancel" (click)="onNoClick()">Annulla</button>
-      <button type="button" class="btn-save" (click)="save()">Salva Defunto</button>
-    </div>
+        <!-- Cognome (Obbligatorio) -->
+        <div class="form-group">
+          <label for="cognome">Cognome *</label>
+          <input type="text" id="cognome" name="cognome" [(ngModel)]="cognome" #cognomeCtrl="ngModel" placeholder="Rossi" required />
+          @if (cognomeCtrl.invalid && (cognomeCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">Il cognome è obbligatorio.</span>
+          }
+        </div>
+
+        <!-- Codice Fiscale (Obbligatorio + Regex italiana) -->
+        <div class="form-group">
+          <label for="codiceFiscale">Codice fiscale *</label>
+          <input type="text" id="codiceFiscale" name="codiceFiscale" [(ngModel)]="codiceFiscale" #cfCtrl="ngModel" placeholder="RSSMRA85A01H501D" required pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$" />
+          @if (cfCtrl.invalid && (cfCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">
+              @if (cfCtrl.errors?.['required']) { Codice fiscale obbligatorio. }
+              @if (cfCtrl.errors?.['pattern']) { Formato non valido (16 caratteri alfanumerici). }
+            </span>
+          }
+        </div>
+
+        <!-- Sesso (Obbligatorio + Accetta solo M o F) -->
+        <div class="form-group">
+          <label for="sesso">Sesso *</label>
+          <input type="text" id="sesso" name="sesso" [(ngModel)]="sesso" #sessoCtrl="ngModel" placeholder="M/F" required pattern="^[MFmf]$" />
+          @if (sessoCtrl.invalid && (sessoCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">Inserisci M o F.</span>
+          }
+        </div>
+
+        <!-- Data di Nascita -->
+        <div class="form-group">
+          <label for="dataNascita">Data di nascita Defunto</label>
+          <input type="date" id="dataNascita" name="dataNascita" [(ngModel)]="dataNascita" />
+        </div>
+
+        <!-- Data di Decesso -->
+        <div class="form-group">
+          <label for="dataMorte">Data di decesso Defunto *</label>
+          <input type="date" id="dataMorte" name="dataMorte" [(ngModel)]="dataMorte" />
+        </div>
+
+        <!-- Luogo di Decesso -->
+        <div class="form-group">
+          <label for="luogoMorte">Luogo di decesso Defunto</label>
+          <input type="text" id="luogoMorte" name="luogoMorte" [(ngModel)]="luogoMorte" placeholder="Roma" />
+        </div>
+
+        <!-- Luogo di Nascita -->
+        <div class="form-group">
+          <label for="luogoNascita">Luogo di nascita Defunto</label>
+          <input type="text" id="luogoNascita" name="luogoNascita" [(ngModel)]="luogoNascita" placeholder="Roma" />
+        </div>
+
+        <!-- Stato Civile -->
+        <div class="form-group">
+          <label for="statoCivile">Stato Civile Defunto</label>
+          <input type="text" id="statoCivile" name="statoCivile" [(ngModel)]="statoCivile" placeholder="Celibe/Coniugato/Divorziato" />
+        </div>
+
+        <!-- Causa Morte -->
+        <div class="form-group">
+          <label for="causaDecesso">Causa Morte Defunto</label>
+          <input type="text" id="causaDecesso" name="causaDecesso" [(ngModel)]="causaDecesso" placeholder="" />
+        </div>
+
+        <!-- Indirizzo -->
+        <div class="form-group">
+          <label for="indirizzoUltimaResidenza">Indirizzo Defunto</label>
+          <input type="text" id="indirizzoUltimaResidenza" name="indirizzoUltimaResidenza" [(ngModel)]="indirizzoUltimaResidenza" placeholder="via del Corso, 1" />
+        </div>
+
+        <!-- Epitaffio -->
+        <div class="form-group full-width">
+          <label for="epitaffio">Epitaffio</label>
+          <textarea id="epitaffio" name="epitaffio" [(ngModel)]="epitaffio" placeholder="Inserisci epitaffio"></textarea>
+        </div>
+
+        <!-- Settore (Obbligatorio) -->
+        <div class="form-group">
+          <label for="settoreSepoltura">Settore Defunto</label>
+          <input type="text" id="settoreSepoltura" name="settoreSepoltura" [(ngModel)]="settoreSepoltura" #settoreCtrl="ngModel" required />
+          @if (settoreCtrl.invalid && (settoreCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">Il settore è obbligatorio.</span>
+          }
+        </div>
+
+        <!-- Id Sepoltura (Obbligatorio) -->
+        <div class="form-group">
+          <label for="idSepoltura">Id sepoltura Defunto</label>
+          <input type="text" id="idSepoltura" name="idSepoltura" [(ngModel)]="idSepoltura" #idCtrl="ngModel" required />
+          @if (idCtrl.invalid && (idCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">L'Id sepoltura è obbligatorio.</span>
+          }
+        </div>
+
+        <!-- Data Sepoltura -->
+        <div class="form-group">
+          <label for="dataSepoltura">Data sepoltura Defunto</label>
+          <input type="date" id="dataSepoltura" name="dataSepoltura" [(ngModel)]="dataSepoltura"/>
+        </div>
+
+        <!-- Amministratore (Obbligatorio) -->
+        <div class="form-group">
+          <label for="amministratoreResponsabile">Amministratore Defunto</label>
+          <input type="text" id="amministratoreResponsabile" name="amministratoreResponsabile" [(ngModel)]="amministratoreResponsabile" #amminCtrl="ngModel" required />
+          @if (amminCtrl.invalid && (amminCtrl.touched || defuntoForm.submitted)) {
+            <span class="error-msg">L'Amministratore è obbligatorio.</span>
+          }
+        </div>
+      </div>
+        
+      <!-- Bottoni di Azione spostati dentro il form per far funzionare il tipo submit -->
+      <div class="dialog-actions">
+        <button type="button" class="btn-cancel" (click)="onNoClick()">Annulla</button>
+        <button type="submit" class="btn-save">Salva Defunto</button>
+      </div>
+
+    </form>
   </div>
 </div>
