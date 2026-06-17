@@ -1,0 +1,88 @@
+.login-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #000000;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 12px; /* Angoli arrotondati come nella foto */
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+  color: #333333;
+}
+
+.form-input::placeholder {
+  color: #999999;
+}
+
+.form-input:focus {
+  border-color: #04195e; /* Colore del bordo quando il campo è attivo */
+}   
+
+/* Stile quando il campo ha un errore di validazione */
+.form-input.input-error {
+  border-color: #b00020; /* Bordo rosso*/
+}
+
+.field-error {
+  color: #b00020; /* Testo dell'errore rosso sotto l'input */
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #04195e; 
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #03306e; /* Colore più scuro al passaggio del mouse */
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.global-error {
+  color: #b00020;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: center;
+  font-weight: 500;
+}

@@ -3,6 +3,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /*spazio bianco alla fine della tabella*/
+  margin-bottom: 20px;
 }
 
 /* Header elegante */

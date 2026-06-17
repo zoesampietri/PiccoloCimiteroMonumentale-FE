@@ -1,6 +1,6 @@
 <div class="dialog-overlay"> <!-- Sfondo oscurato -->
   <div class="dialog-container">
-    <h2>{{ idDefunto ? 'Modifica Defunto' : 'Registrazione di un nuovo defunto' }}</h2>
+    <h2>{{ id ? 'Modifica Defunto' : 'Registrazione di un nuovo defunto' }}</h2>
 
     <!-- Avvolto tutto nel tag form con riferimento #defuntoForm -->
     <form #defuntoForm="ngForm" (ngSubmit)="save(defuntoForm)" novalidate>
@@ -40,9 +40,9 @@
         <!-- Sesso (Obbligatorio + Accetta solo M o F) -->
         <div class="form-group">
           <label for="sesso">Sesso *</label>
-          <input type="text" id="sesso" name="sesso" [(ngModel)]="sesso" #sessoCtrl="ngModel" placeholder="M/F" required pattern="^[MFmf]$" />
+          <input type="text" id="sesso" name="sesso" [(ngModel)]="sesso" #sessoCtrl="ngModel" placeholder="m/f" required pattern="^[mf]$" />
           @if (sessoCtrl.invalid && (sessoCtrl.touched || defuntoForm.submitted)) {
-            <span class="error-msg">Inserisci M o F.</span>
+            <span class="error-msg">Inserisci m o f.</span>
           }
         </div>
 
@@ -84,7 +84,7 @@
 
         <!-- Indirizzo -->
         <div class="form-group">
-          <label for="indirizzoUltimaResidenza">Indirizzo Defunto</label>
+          <label for="indirizzoUltimaResidenza">Ultimo Indirizzo Defunto</label>
           <input type="text" id="indirizzoUltimaResidenza" name="indirizzoUltimaResidenza" [(ngModel)]="indirizzoUltimaResidenza" placeholder="via del Corso, 1" />
         </div>
 

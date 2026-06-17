@@ -1,0 +1,51 @@
+<div class="login-container">
+  <h2 class="login-title">Login Amministratore</h2>
+
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    
+    <!-- Campo Username -->
+    <div class="form-group">
+      <label class="form-label">Username *</label>
+      <input 
+        type="text" 
+        [(ngModel)]="username" 
+        name="username" 
+        required 
+        #userField="ngModel"
+        [class.input-error]="userField.invalid && userField.touched"
+        class="form-input" 
+        placeholder="Inserisci username">
+      <span *ngIf="userField.invalid && userField.touched" class="field-error">
+        L'username è obbligatorio.
+      </span>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="form-group">
+      <label class="form-label">Email *</label>
+      <input 
+        type="email" 
+        [(ngModel)]="email" 
+        name="email" 
+        required 
+        #emailField="ngModel"
+        [class.input-error]="emailField.invalid && emailField.touched"
+        class="form-input" 
+        placeholder="Inserisci email">
+      <span *ngIf="emailField.invalid && emailField.touched" class="field-error">
+        L'email è obbligatoria.
+      </span>
+    </div>
+
+    <!-- Pulsante Accedi -->
+    <button type="submit" class="submit-button" [disabled]="loginForm.invalid">
+      Accedi
+    </button>
+
+  </form>
+
+  <!-- Errore credenziali errate -->
+  <p *ngIf="errorMessage" class="global-error">
+    {{ errorMessage }}
+  </p>
+</div>

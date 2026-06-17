@@ -5,7 +5,7 @@ import { DefuntoEntity } from '../modelli/defunto-entity.model';
 
 @Injectable({providedIn: 'root'})
 export class DefuntoEntityService {
-  private apiUrl = '/api/defunto-entities';
+  private apiUrl = '/api/defunti';
 
   constructor(private http: HttpClient) {}
 
