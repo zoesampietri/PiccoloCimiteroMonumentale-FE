@@ -3,26 +3,9 @@
 
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     
-    <!-- Campo Username -->
+    <!-- Campo Mail -->
     <div class="form-group">
-      <label class="form-label">Username *</label>
-      <input 
-        type="text" 
-        [(ngModel)]="username" 
-        name="username" 
-        required 
-        #userField="ngModel"
-        [class.input-error]="userField.invalid && userField.touched"
-        class="form-input" 
-        placeholder="Inserisci username">
-      <span *ngIf="userField.invalid && userField.touched" class="field-error">
-        L'username è obbligatorio.
-      </span>
-    </div>
-
-    <!-- Campo Email -->
-    <div class="form-group">
-      <label class="form-label">Email *</label>
+      <label class="form-label">Mail *</label>
       <input 
         type="email" 
         [(ngModel)]="email" 
@@ -37,8 +20,25 @@
       </span>
     </div>
 
+    <!-- Campo Password -->
+    <div class="form-group">
+      <label class="form-label">Password *</label>
+      <input 
+        type="password" 
+        [(ngModel)]="password" 
+        name="password" 
+        required 
+        #passwordField="ngModel"
+        [class.input-error]="passwordField.invalid && passwordField.touched"
+        class="form-input" 
+        placeholder="Inserisci password">
+      <span *ngIf="passwordField.invalid && passwordField.touched" class="field-error">
+        La password è obbligatoria.
+      </span>
+    </div>
+
     <!-- Pulsante Accedi -->
-    <button type="submit" class="submit-button" [disabled]="loginForm.invalid">
+    <button type="submit" class="submit-button" >
       Accedi
     </button>
 

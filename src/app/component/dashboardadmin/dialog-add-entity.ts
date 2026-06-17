@@ -36,6 +36,7 @@ export class DialogAddEntity implements OnInit {
   idSepoltura: string = '';
   dataSepoltura: Date | undefined = undefined;
   amministratoreResponsabile: string = '';
+  authService: any;
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -44,6 +45,8 @@ export class DialogAddEntity implements OnInit {
   constructor(private defuntoEntityService: DefuntoEntityService, @Inject(DIALOG_DATA) public data: DefuntoEntity | null) {}
 
   ngOnInit(): void {
+    const cf=this.authService.getCf();
+
     // Se 'data' esiste, significa che l'utente ha cliccato su "Modifica"
     if (this.data) {
       this.id = this.data.id || null; // Salva l'id se presente nel tuo modello
@@ -62,7 +65,7 @@ export class DialogAddEntity implements OnInit {
       this.settoreSepoltura = this.data.settoreSepoltura || '';
       this.idSepoltura = this.data.idSepoltura || '';
       this.dataSepoltura = this.data.dataSepoltura;
-      this.amministratoreResponsabile = this.data.amministratoreResponsabile || '';
+      this.amministratoreResponsabile = this.data.amministratoreResponsabile || cf;
     }
   }
 

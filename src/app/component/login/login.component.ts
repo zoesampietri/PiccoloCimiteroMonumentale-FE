@@ -16,19 +16,21 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
   email = '';
+  password = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  // Dentro il tuo LoginComponent
   onSubmit() {
-    setTimeout(() => {
-      if (this.authService.login(this.username, this.email)) {
+    this.authService.login(this.email, this.password).subscribe(isValid => {
+      if (isValid) {
+        console.log('Login effettuato! CF:', this.authService.getCf());
         this.router.navigate(['/dashboardadmin']); 
       } else {
-        this.errorMessage = 'Credenziali non valide!';
+        console.log('Credenziali errate');
       }
-    }, 50);
+    });
   }
 }
