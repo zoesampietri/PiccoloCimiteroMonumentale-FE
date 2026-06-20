@@ -1,3 +1,5 @@
+/*Stili globali che mi servono principalmente a definire header e footer che rimangono fissi durante la navigazione */
+
 /* FONDAMENTALE: Senza questi il footer non rimane in fondo  */
 html, body {
   height: 100%; /* Assicura che il body occupi tutta l'altezza della finestra */

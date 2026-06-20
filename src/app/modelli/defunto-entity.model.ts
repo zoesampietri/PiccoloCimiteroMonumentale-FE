@@ -1,4 +1,4 @@
-
+// Questo è un modello TypeScript che rappresenta un defunto.
 export class DefuntoEntity {
   id?: string;              // Il '?' è un modo rapido per dire "string | undefined"
   codiceFiscale!: string;  // Obbligatorio, lo inserirai dal form

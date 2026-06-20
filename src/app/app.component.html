@@ -1,13 +1,16 @@
+<!-- Componente principale dell'applicazione Angular. Si lega a <app-root> del file index.html e crea la barra di navigazione e il 
+piè di pagina che rimangono fissi durante la navigazione e lascia lo spazio per il contenuto dei componenti che si aggancia a router-outlet -->
+
 <div class="app-container">
   <header class="main-header">
     <div class="logo-container">
       <!-- Logo a sinistra -->
-      <a class="navbar-brand" href="/">     
+      <a class="navbar-brand" href="/">     <!-- Link al logo che porta alla home page -->
           <img src="Logo.svg" alt="Logo" class="logo">
       </a>
     </div>
 
-    <nav class="nav-links">   <!-- Link a destra -->
+    <nav class="nav-links">   <!-- Link della dashboard amministratore destra -->
       <a routerLink="/dashboardadmin" class="admin-link"> Dashboard Amministratore</a>
     </nav>
   </header>
@@ -16,7 +19,7 @@
     <router-outlet></router-outlet>     <!-- Qui vengono caricate le componenti in base alla rotta -->
   </main>
 
-  <footer class="main-footer">    <!-- Footer con 4 colonne -->
+  <footer class="main-footer">    <!-- Footer con 3 colonne -->
     <div class="footer-content">
 
       <div class="footer-section">

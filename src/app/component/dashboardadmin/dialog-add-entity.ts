@@ -6,6 +6,7 @@ import {DefuntoEntityService} from '../../service/defunto-entity.service';
 import { lastValueFrom } from 'rxjs';
 import { Dialog, DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from '../../service/auth.service'; 
 
 @Component(
   {
@@ -22,7 +23,6 @@ export class DialogAddEntity implements OnInit {
   nome: string='';
   cognome: string='';
   sesso: string='';
-  codicefiscale: string='';
   codiceFiscale: string = '';
   dataNascita: Date | undefined = undefined;
   dataMorte: Date | undefined = undefined;
@@ -36,16 +36,18 @@ export class DialogAddEntity implements OnInit {
   idSepoltura: string = '';
   dataSepoltura: Date | undefined = undefined;
   amministratoreResponsabile: string = '';
-  authService: any;
 
-  onNoClick(): void {
+  onNoClick(): void {   // Metodo chiamato quando l'utente clicca su "Annulla" nella finestra di dialogo, chiude la finestra senza salvare i dati
     this.dialogRef.close();
   }
 
-  constructor(private defuntoEntityService: DefuntoEntityService, @Inject(DIALOG_DATA) public data: DefuntoEntity | null) {}
+  constructor(private defuntoEntityService: DefuntoEntityService, private authService: AuthService, @Inject(DIALOG_DATA) public data: DefuntoEntity | null) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {  // Metodo chiamato quando il componente viene inizializzato, se 'data' esiste, significa che l'utente ha cliccato su "Modifica" e quindi i campi del form vengono popolati con i dati del defunto da modificare
     const cf=this.authService.getCf();
+    console.log('CF dell\'amministratore responsabile:', cf);
+
+    this.amministratoreResponsabile = cf; // Imposta l'amministratore responsabile con il CF dell'utente loggato
 
     // Se 'data' esiste, significa che l'utente ha cliccato su "Modifica"
     if (this.data) {

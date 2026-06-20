@@ -1,0 +1,270 @@
+/* --- STILI HOME PAGE IL PICCOLO CIMITERO MONUMENTALE --- */
+
+.home-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+    font-family: 'Times New Roman', Times, serif; 
+    background-color: #ffffff;
+    color: #111111;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.hero-logo-box {
+    font-size: 3.5rem;
+    color: #001f54; /* Colore scuro coordinato al tuo footer */
+    margin-bottom: 15px;
+    opacity: 0.85;
+}
+
+.hero-section h1 {
+    font-size: 3.2rem;
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #555555;
+    margin-bottom: 25px;
+}
+
+.hero-description {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444444;
+}
+
+/* --- STORIA (STORY GRID) --- */
+.story-section {
+    background-color: #fcfcfc;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    padding: 60px 20px;
+}
+
+.story-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.story-card h2 {
+    font-size: 2.2rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.story-card p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    color: #444444;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.quote-box {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 35px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.quote-box i {
+    font-size: 2rem;
+    color: #001f54;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.quote-box blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #222222;
+}
+
+.quote-box cite {
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #777777;
+    font-weight: 500;
+}
+
+/* --- I CINQUE VENTI (SETTORI) --- */
+.sectors-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.4rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 45px;
+}
+
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.sector-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 25px 15px;
+    border-radius: 4px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sector-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+.sector-icon {
+    font-size: 1.8rem;
+    color: #001f54;
+    margin-bottom: 15px;
+}
+
+.sector-card h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.sector-card p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.85rem;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* --- PERSONAGGI CELEBRI --- */
+.notables-section {
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 70px 20px;
+}
+
+.notables-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.notables-intro h2 {
+    font-size: 2.2rem;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.notables-intro p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #555555;
+    font-size: 1rem;
+}
+
+.notables-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.notable-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.notable-item h4 {
+    font-size: 1.15rem;
+    font-weight: normal;
+    margin-bottom: 4px;
+}
+
+.sector-tag {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #001f54;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.notable-item p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.9rem;
+    color: #444444;
+    line-height: 1.5;
+}
+
+/* --- CALL TO ACTION FINALE --- */
+.cta-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #ffffff;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.cta-section p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #666666;
+    margin-bottom: 30px;
+}
+
+/* Bottone identico a "Aggiungi Defunto" del tuo screenshot */
+.btn-action-home {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333333;
+    border: 1px solid #dcdcdc;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.btn-action-home:hover {
+    background-color: #e2e2e2;
+    border-color: #cccccc;
+}
+
