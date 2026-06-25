@@ -20,6 +20,14 @@ export class DefuntoEntityService {
     return this.http.get<DefuntoEntity>(`${this.apiUrl}/${id}`); //get a /app/defunti/:id ritorna un singolo DefuntoEntity, quindi il tipo di ritorno è Observable<DefuntoEntity>
   }
 
+  getDefuntiBySettore(idSettore: string): Observable<DefuntoEntity[]> {
+    return this.http.get<DefuntoEntity[]>(`${this.apiUrl}/settore/${idSettore}`); //get a /app/defunti/settore/:idSettore ritorna un array di DefuntoEntity, quindi il tipo di ritorno è Observable<DefuntoEntity[]>
+  }
+
+  getDefuntiByNomeCognome(nome: string, cognome: string): Observable<DefuntoEntity[]> {
+    return this.http.get<DefuntoEntity[]>(`${this.apiUrl}/search?nome=${nome}&cognome=${cognome}`); //get a /app/defunti/search?nome=...&cognome=... ritorna un array di DefuntoEntity, quindi il tipo di ritorno è Observable<DefuntoEntity[]>
+  }
+
   createDefunto(entity: DefuntoEntity): Observable<DefuntoEntity> {
     return this.http.post<DefuntoEntity>(this.apiUrl, entity);  //post a /app/defunti ritorna il DefuntoEntity appena creato, quindi il tipo di ritorno è Observable<DefuntoEntity>
   }
@@ -31,4 +39,6 @@ export class DefuntoEntityService {
   deleteDefunto(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);    //delete a /app/defunti/:id ritorna void, quindi il tipo di ritorno è Observable<void>
   }
+
+
 }

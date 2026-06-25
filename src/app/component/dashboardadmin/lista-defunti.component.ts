@@ -1,6 +1,5 @@
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import {DefuntoEntity} from '../../modelli/defunto-entity.model';
 import {DefuntoEntityService} from '../../service/defunto-entity.service';
 import { lastValueFrom } from 'rxjs';
