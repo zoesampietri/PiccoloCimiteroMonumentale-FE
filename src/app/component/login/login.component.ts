@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule, ActivatedRoute} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
@@ -15,18 +15,24 @@ import { AuthService } from '../../service/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   mail = '';
   password = '';
   errorMessage = '';
+  returnUrl='';
 
-  constructor(private authService: AuthService, private router: Router) {} // Inietta il servizio AuthService e il Router per la navigazione tra le pagine
+  ngOnInit() {
+    // Recupera l'URL di ritorno dai parametri della query string, se presente
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+  }
+
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {} // Inietta il servizio AuthService e il Router per la navigazione tra le pagine
 
   onSubmit() {    // Metodo chiamato quando l'utente invia il form di login
     this.authService.login(this.mail, this.password).subscribe(isValid => {  // Chiama il metodo login del servizio AuthService e si iscrive all'Observable restituito
       if (isValid) {
         console.log('Login effettuato! CF:', this.authService.getCf());
-        this.router.navigate(['/dashboardadmin']); // Naviga alla pagina dashboardadmin se il login è valido
+        this.router.navigate([this.returnUrl]); // Naviga alla pagina di ritorno se il login è valido
       } else {
         console.log('Credenziali errate');
       }

@@ -1,5 +1,5 @@
 .titolo {
-  margin-left: 20px;
+  text-align: center;
 }
 
 label {
@@ -52,9 +52,15 @@ label {
 .cemetery-legend-card {
   background: #ffffff;
   border-radius: 12px;
-  padding: 16px;
+  
   max-width: 200px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.rosa-venti{
+  width: 200px;
+  height: auto;
+  margin-bottom: 15px;
 }
 
 /* Intestazione della legenda */
@@ -141,7 +147,6 @@ label {
   font-size: 11px;
   color: #64748b;
 }
-
 
 /* --- CONTENITORE MAPPA --- */
 .mappa-container {
@@ -232,7 +237,6 @@ label {
 }
 
 .pannello-header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eee;
@@ -261,19 +265,66 @@ label {
   color: #e74c3c;
 }
 
-.pannello-corpo .descrizione {
-  color: #7f8c8d;
-  line-height: 1.5;
-  margin-bottom: 15px;
+.sepoltura-header{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
 }
 
+.tipologia-image{
+  flex: 0 0 120px; /* Larghezza fissa per l'immagine */
+  height: 120px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tipologia-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Evita distorsioni della foto */
+}
+
+/* Contenitore informazioni */
+.info {
+  flex: 1; /* Prende tutto lo spazio restante */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Spazio uniforme tra i testi */
+}
+
+.descrizione {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.label {
+  color: #7f8c8d;
+}
+
+/* Badge per lo stato (opzionale, per renderlo più carino) */
+.status-badge {
+  background-color: #e8f8f5;
+  color: #1abc9c;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Badge contatore defunti */
 .badge-defunti {
-  display: inline-block;
-  background-color: #ecf0f1;
-  padding: 8px 12px;
-  border-radius: 4px;
-  color: #34495e;
-  font-size: 0.95rem;
+  align-self: flex-start; /* Evita che il badge si allarghi al 100% */
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #495057;
+  font-size: 0.9rem;
+  margin-top: 4px;
 }
 
 .badge-defunti span {

@@ -1,10 +1,10 @@
-import { Component, inject, OnInit, Inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DefuntoEntity} from '../../modelli/defunto-entity.model';
 import {DefuntoEntityService} from '../../service/defunto-entity.service';
 import { lastValueFrom } from 'rxjs';
-import { Dialog, DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Dialog} from '@angular/cdk/dialog';
+import { FormsModule } from '@angular/forms';
 import { DialogAddEntity } from './dialog-add-entity';
 
 @Component({
@@ -18,6 +18,7 @@ import { DialogAddEntity } from './dialog-add-entity';
   styleUrl: './lista-defunti.component.css'
 })
 export class DefuntoEntitiesComponent implements OnInit {
+  activeTab: string = 'defunti'; // Variabile per tenere traccia della scheda attiva (defunti, sepolture, concessionari)
   displayedColumns: string[] = ['id', 'codicefiscale', 'nome', 'cognome', 'sesso','action'];// Definisce le colonne da visualizzare nella tabella dei defunti
   dataSource: DefuntoEntity[]=[];   // Array che conterrà i dati dei defunti da visualizzare nella tabella
   readonly dialog = inject(Dialog);   // Inietta il servizio Dialog per aprire finestre di dialogo
@@ -25,6 +26,7 @@ export class DefuntoEntitiesComponent implements OnInit {
   constructor(private defuntoEntityService: DefuntoEntityService) {}
 
   async ngOnInit() {    // Metodo chiamato quando il componente viene inizializzato, carica la lista dei defunti
+    this.activeTab = 'defunti';
     await this.loadSampleEntities();
   }
 
@@ -45,6 +47,9 @@ export class DefuntoEntitiesComponent implements OnInit {
   }
 
   async deleteItem(id: string): Promise<void> {   // Metodo che elimina un defunto dalla lista, riceve come parametro l'id del defunto da eliminare
+    if (!confirm('Sei sicuro di voler eliminare questo defunto?')) {
+      return;
+    }
     await lastValueFrom(this.defuntoEntityService.deleteDefunto(id));
     await this.loadSampleEntities();
   }

@@ -57,10 +57,63 @@ html, body {
   color: #000;
 }
 
-.admin-link:hover {
+/* Allinea i link e la tendina sulla stessa riga */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Spazio tra i link */
+}
+
+/* Stile del contenitore della tendina */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Stile del pulsante che apre il menu */
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: inherit; /* Eredita il colore degli altri link */
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.dropdown-btn:hover {
   background-color: #f5f5f5;  /* Effetto al passaggio del mouse */
   color: #000;
 }
+
+/* Il menu nascosto con i link interni */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stile dei link dentro la tendina */
+.dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* Effetto hover al passaggio del mouse */
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+}
+
 
 /* FOOTER - LAYOUT A COLONNE */
 .main-footer {

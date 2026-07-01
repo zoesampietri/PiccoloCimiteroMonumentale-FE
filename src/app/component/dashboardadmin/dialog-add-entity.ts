@@ -1,10 +1,9 @@
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import {DefuntoEntity} from '../../modelli/defunto-entity.model';
 import {DefuntoEntityService} from '../../service/defunto-entity.service';
 import { lastValueFrom } from 'rxjs';
-import { Dialog, DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../../service/auth.service'; 
 

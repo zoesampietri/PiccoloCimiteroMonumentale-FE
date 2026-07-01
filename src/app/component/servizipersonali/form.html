@@ -1,0 +1,36 @@
+<div class="dialog-overlay"> <!-- Sfondo oscurato -->
+  <div class="dialog-container">
+    <h2>Prenotazione per {{ nome_servizio }}</h2>
+
+    <!-- Avvolto tutto nel tag form con riferimento #PrenotazioneForm -->
+    <form #PrenotazioneForm="ngForm" (ngSubmit)="save(PrenotazioneForm)" novalidate>
+      
+      <div class="dialog-content form-grid">
+        
+        <!-- Id Defunto (Obbligatorio) -->
+        <div class="form-group" class="full-width">
+          <label for="defunto">Id defunto {{ id_defunto }}</label>
+        </div>
+
+        <!-- Data di Prenotazione -->
+        <div class="form-group">
+          <label for="dataPrenotazione">Data di prenotazione</label>
+          <input type="date" id="dataPrenotazione" name="dataPrenotazione" [(ngModel)]="data"  />
+        </div>
+
+        <!-- ora_inizio -->
+        <div class="form-group">
+          <label for="ora_inizio">Ora di inizio</label>
+          <input type="time" id="ora_inizio" name="ora_inizio" [(ngModel)]="ora_inizio"/>
+        </div>
+      </div>
+        
+      <!-- Bottoni di Azione spostati dentro il form per far funzionare il tipo submit -->
+      <div class="dialog-actions">
+        <button type="button" class="btn-cancel" (click)="onNoClick()">Annulla</button>
+        <button type="submit" class="btn-save"> Salva </button>
+      </div>
+
+    </form>
+  </div>
+</div>

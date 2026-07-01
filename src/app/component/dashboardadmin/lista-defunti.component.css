@@ -1,6 +1,34 @@
-.titolo {
-  margin-left: 20px;
+/* Contenitore principale */
+.admin-menu-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 8px;
 }
+
+/* Stile dei bottoni */
+.btn-titolo {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #717171;
+}
+
+/* Effetto al passaggio del mouse */
+.btn-titolo:hover {
+    background-color: #fafafa;
+}
+
+.admin-menu-container .btn-titolo.active {
+    color: #000000;
+}
+
 
 /* Stile generale della tabella */
 table {

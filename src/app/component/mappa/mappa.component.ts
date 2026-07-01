@@ -190,4 +190,26 @@ export class MappaComponent implements OnInit {
     
     this.selezionaSettore(sepoltura);
   }
+
+  immagine(tipologia: string): string {
+    if (tipologia === "tumulazione") {
+      return 'Screenshot 2026-04-14 101633.png';
+    }
+    if (tipologia === "inumazione") {
+      return 'waldemar-brandt-jeTlob-Wv0M-unsplash.jpg';
+    }
+     if (tipologia === "ossario") {
+      return 'sasha-matveeva-K87w2adu3ho-unsplash-Ritocco.png';
+    }
+    return 'Logo.svg';
+  }
+
+  settore(id: string): string{
+    if (id==="A") return "Ostro";
+    if (id==="B") return "Libeccio";
+    if (id==="C") return "Maestrale";
+    if (id==="D") return "Grecale";
+    if (id==="E") return "Scirocco";
+    return "";
+  }
 }

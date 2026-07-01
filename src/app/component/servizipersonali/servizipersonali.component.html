@@ -1,0 +1,85 @@
+<div class="prenotazioni-container">
+  <h1 class="page-title">Benvenuto {{ nome }} {{ cognome }}</h1>
+  <h2 class="section-title">Le tue prenotazioni</h2>  
+
+  <div class="cards-grid">
+    <!-- Card della prenotazione (ripetuta per ogni elemento) -->
+    @for (p of prenotazioni; track p.prenotazione.id) {
+    <div class="prenotazione-card">
+      @if (p && p.prenotazione.id) {
+      
+      <!-- Testata della Card: Info Principali -->
+      <div class="card-header">
+        <div class="service-image">
+          <img [src]="immagine(p.prenotazione.id.nome_servizio)" alt="{{ p.prenotazione.id.nome_servizio }}">
+        </div>
+        <div class="service-info">
+          <span class="service-badge">{{ p.prenotazione.id.nome_servizio }}</span>
+          <h3 class="defunto-name">ID Defunto: {{ p.prenotazione.id.id_defunto }}</h3>
+        </div>
+        <div class="status-badges">
+          <span class="badge" [ngClass]="p.prenotazione.stato_organizzativo?.toLowerCase()">
+            Stato: {{ p.prenotazione.stato_organizzativo }}
+          </span>
+
+          <span class="badge" >
+            Pagamento: 
+          
+          @if (p.prenotazione.stato_pagamento?.toLowerCase() === 'da saldare') {
+              <span class="dot dot-danger"></span>
+          } @else if (p.prenotazione.stato_pagamento?.toLowerCase() === 'parzialmente saldato') {
+              <span class="dot dot-warning"></span>
+          } @else if ( p.prenotazione.stato_pagamento?.toLowerCase() === 'saldato') {
+              <span class="dot dot-success"></span>
+          } @else {
+              <span class="dot dot-default"></span>
+          }
+          </span>
+            
+        </div>
+      </div>
+
+      <!-- Corpo della Card: Dettagli -->
+      <div class="card-body">
+        <div class="detail-item" *ngIf="p.prenotazione.data">
+          <span class="label">Data:</span>
+          <span class="value">{{ p.prenotazione.data | date:'dd/MM/yyyy' }}</span>
+        </div>
+        <div class="detail-item" *ngIf="p.durata">
+          <span class="label">Durata:</span>
+          <span class="value">{{ p.durata }}</span>
+        </div>
+        <div class="detail-item" *ngIf="p.prenotazione.ora_inizio">
+          <span class="label">Ora Inizio:</span>
+          <span class="value">{{ p.prenotazione.ora_inizio }}</span>
+        </div>
+      </div>
+
+      <!-- Piè di pagina della Card: Pulsanti di Azione -->
+      <div class="card-actions">
+        @if (p.annullaPrenotazione) {
+          <button class="btn btn-secondary" (click)="eliminaPrenotazione(p.prenotazione)">
+            Elimina
+          </button>
+        }
+        @if (p.modificaPrenotazione) {
+          <button class="btn btn-secondary" (click)="modificaPrenotazione(p.prenotazione)">
+            Modifica
+          </button>
+        }
+        @if (p.rinnovaPrenotazione) {
+          <button class="btn btn-secondary" (click)="rinnovaPrenotazione(p.prenotazione)">
+            Rinnova
+          </button>
+        }
+        @if (p.pagaPrenotazione) {
+          <button class="btn btn-primary" (click)="pagaPrenotazione(p.prenotazione)">
+            Paga Ora
+          </button>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<h1 class="titolo">Mapppa del Cimitero</h1>
+<h1 class="titolo">Mappa del Cimitero</h1>
 
 <div class="search-container">
   <label for="testoCerca">Cerca uno specifico defunto:</label>
@@ -21,6 +21,10 @@
 <div class="layout-orizzontale">
 
   <div class="cemetery-legend-card">
+    <div> 
+    <img src="Rosa dei venti.png" alt="rosa dei venti" class="rosa-venti">
+  </div>
+  
   <div class="legend-header">
     <span class="legend-icon">🗺️</span>
     <h3 class="legend-title">Legenda Mappa</h3>
@@ -889,17 +893,27 @@
   <div class="pannello-info">
     <div class="pannello-header">
       @if (settoreSelezionato && settoreSelezionato.sepoltura) {
-      <h3>Sepoltura {{ settoreSelezionato.sepoltura.id.id }} - Numero {{ settoreSelezionato.sepoltura.id.numero }}</h3>
+      <h2>Settore {{ settore(settoreSelezionato.sepoltura.id.id) }}</h2>
+      <h3>Sepoltura {{ settoreSelezionato.sepoltura.id.id }} - {{ settoreSelezionato.sepoltura.id.numero }}</h3>
       }@else {
         <h3>Nessun settore selezionato</h3>
       }
     </div>
     <div class="pannello-corpo">
       @if (settoreSelezionato && settoreSelezionato.sepoltura) {
-        <p class="descrizione">Stato: {{ settoreSelezionato.sepoltura.stato }}</p>
-        
-        <div class="badge-defunti">
-          <strong>Defunti presenti: </strong> <span>{{ settoreSelezionato.defunti.length }}</span> su <span>{{ settoreSelezionato.sepoltura.capacita }}</span>
+        <div class="sepoltura-header">
+          
+        <div class="tipologia-image">
+          <img [src]="immagine(settoreSelezionato.sepoltura.tipologia)" alt="{{ settoreSelezionato.sepoltura.tipologia }}">
+        </div>
+        <div class="info">
+          <p class="descrizione">Tipologia: {{ settoreSelezionato.sepoltura.tipologia }}</p>
+          <p class="descrizione">Stato: {{ settoreSelezionato.sepoltura.stato }}</p>
+          
+          <div class="badge-defunti">
+            <strong>Defunti presenti: </strong> <span>{{ settoreSelezionato.defunti.length }}</span> su <span>{{ settoreSelezionato.sepoltura.capacita }}</span>
+          </div>
+        </div>
         </div>
         
         @for (defunto of settoreSelezionato.defunti; track defunto.codiceFiscale) {

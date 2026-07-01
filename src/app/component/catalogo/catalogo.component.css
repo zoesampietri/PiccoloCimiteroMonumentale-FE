@@ -1,0 +1,127 @@
+/* Contenitore generale centrato nella pagina */
+.catalogo-wrapper {
+  max-width: 900px; /* Larghezza contenuta per mantenere l'allineamento centrale */
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Titolo pulito e minimale */
+.titolo-istituzionale {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 35px;
+}
+
+/* Lista verticale di righe */
+.catalogo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* Distanza ridotta tra le righe per un effetto più compatto */
+}
+
+/* La singola riga del servizio (allineata e rimpicciolita) */
+.servizio-riga {
+  background: #ffffff;
+  border: 1px solid #cbd5e1; /* Stesso colore del bordo degli input dello screenshot */
+  border-radius: 8px; /* Angoli leggermente arrotondati come nel form di Login */
+  padding: 12px 20px; /* Padding ridotto per renderlo più sottile */
+  display: flex;
+  align-items: center; /* Centra verticalmente tutti gli elementi sulla riga */
+  gap: 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effetto hover discreto che richiama lo stile dell'applicazione */
+.servizio-riga:hover {
+  border-color: #001a61;
+  box-shadow: 0 2px 8px rgba(0, 26, 97, 0.05);
+}
+
+/* Contenitore della foto piccola */
+.avatar-container {
+  width: 100px; /* Foto decisamente più piccola e discreta */
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.servizio-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sezione centrale con i testi */
+.servizio-corpo {
+  flex-grow: 1; /* Occupa tutto lo spazio centrale disponibile */
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.servizio-nome {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #000000;
+  font-weight: 500;
+}
+
+.servizio-descrizione {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #64748b; /* Grigio chiaro per la descrizione secondaria */
+  line-height: 1.4;
+}
+
+/* Box del prezzo */
+.servizio-prezzo-box {
+  flex-shrink: 0;
+  min-width: 100px;
+  text-align: right;
+}
+
+.servizio-costo {
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Contenitore e Bottone (Copia esatta del tasto "Accedi") */
+.servizio-azione {
+  flex-shrink: 0;
+}
+
+.btn-prenota {
+  background-color: #001a61; /* Il blu scuro istituzionale del tuo bottone "Accedi" */
+  color: #ffffff;
+  border: none;
+  padding: 8px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-prenota:hover {
+  background-color: #000f38; /* Scurimento accennato al passaggio del mouse */
+}
+
+/* Ottimizzazione per schermi piccoli (smartphone) */
+@media (max-width: 600px) {
+  .servizio-riga {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+  .servizio-prezzo-box {
+    text-align: center;
+  }
+  .btn-prenota {
+    width: 100%;
+  }
+}

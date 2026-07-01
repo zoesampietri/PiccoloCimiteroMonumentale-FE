@@ -1,0 +1,45 @@
+<h1 class="titolo-istituzionale">Servizi Disponibili</h1>
+
+<!-- Contenitore principale centrato -->
+<div class="catalogo-wrapper">
+
+  <!-- Contenitore della lista in righe -->
+  <div class="catalogo-lista">
+    @for (element of dataSource; track element.nome) {
+      <div class="servizio-riga">
+        
+        <!-- 1. Foto piccola arrotondata -->
+        <div class="avatar-container">
+          <img [src]="(element).fotoUrl || 'Logo.svg'" alt="Icona" class="servizio-foto">
+        </div>
+
+        <!-- 2. Testi del servizio (Nome e Descrizione uniti) -->
+        <div class="servizio-corpo">
+          <h3 class="servizio-nome">{{ element.nome }}</h3>
+          <p class="servizio-descrizione">
+            {{ element.descrizione || 'Nessuna descrizione disponibile per questo servizio.' }}
+          </p>
+          <p class="servizio-durata">
+            Durata: {{ element.durata || 'Non specificata' }}
+          </p>
+        </div>
+
+        <!-- 3. Prezzo -->
+        <div class="servizio-prezzo-box">
+          <span class="servizio-costo">
+            {{ element.costo ? (element.costo | currency:'EUR':'symbol':'1.2-2') : 'Su richiesta' }}
+          </span>
+        </div>
+
+        <!-- 4. Bottone di azione (Stile istituzionale blu) -->
+        <div class="servizio-azione">
+          <button type="button" class="btn-prenota" (click)="selezionaServizio(element)">
+            Scegli
+          </button>
+        </div>
+
+      </div>
+    }
+  </div>
+
+</div>

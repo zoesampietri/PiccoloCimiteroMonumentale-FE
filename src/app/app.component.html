@@ -3,6 +3,7 @@ piè di pagina che rimangono fissi durante la navigazione e lascia lo spazio per
 
 <div class="app-container">
   <header class="main-header">
+
     <div class="logo-container">
       <!-- Logo a sinistra -->
       <a class="navbar-brand" href="/">     <!-- Link al logo che porta alla home page -->
@@ -10,8 +11,20 @@ piè di pagina che rimangono fissi durante la navigazione e lascia lo spazio per
       </a>
     </div>
 
-    <nav class="nav-links">   <!-- Link della dashboard amministratore destra -->
+    <nav class="nav-links">   <!-- La destra i link per la navigazione -->
+
+      <div class="dropdown">    <!-- Dropdown per i servizi -->
+        <button class="dropdown-btn" (click)="$event.stopPropagation(); toggleDropdown()">    <!-- Bottone per aprire il dropdown, cogela l'evento e poi lo inverte lo stato -->
+          Servizi ▾
+        </button>
+        <div class="dropdown-content" *ngIf="isDropdownOpen">
+          <a routerLink="/servizipersonali" (click)="closeDropdown()">Vedi miei servizi</a>
+          <a routerLink="/catalogo" (click)="closeDropdown()">Tutti i servizi</a>
+        </div>
+      </div>
+      
       <a routerLink="/mappa" class="mappa-link"> Mappa</a>
+
       <a routerLink="/dashboardadmin" class="admin-link"> Dashboard Amministratore</a>
     </nav>
   </header>

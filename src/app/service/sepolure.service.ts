@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SepolturaEntity } from '../modelli/sepolture.model';
-import { DefuntoEntity } from '../modelli/defunto-entity.model';
 
-// Servizio per gestire le operazioni CRUD sui DefuntoEntity. Tutte le volte che intergagisco con il backend per sapere qualcosa
-// sui defunti, devo passare da questo servizio. Questo servizio è iniettato nei componenti che ne hanno bisogno.
+// Servizio per gestire le operazioni CRUD sui SepolturaEntity. Tutte le volte che intergagisco con il backend per sapere qualcosa
+// sulle sepolture, devo passare da questo servizio. Questo servizio è iniettato nei componenti che ne hanno bisogno.
 
 @Injectable({providedIn: 'root'})
 export class SepoltureService {

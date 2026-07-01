@@ -1,0 +1,212 @@
+/* Container Principale */
+.prenotazioni-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Titolo pulito e minimale */
+.page-title {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 35px;
+}
+
+/* Titolo della sezione */
+.section-title {
+  font-size: 1.5rem;
+  color: #1a202c;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Griglia delle Schede */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Singola Card */
+.prenotazione-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.prenotazione-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Header della Card */
+.card-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid #f0f2f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.service-image img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #0a1d56;
+}
+
+.service-badge {
+  background-color: #f0f4ff;
+  color: #0a1d56;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.defunto-name {
+  margin: 0;
+  font-size: 0.825rem;
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.service-info {
+  flex: 1; /* Permette a questa sezione di restringersi o allargarsi */
+  min-width: 150px; /* Forza il testo interno a non far strabordare il box */
+}
+
+/* Badges di Stato */
+.status-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+  flex-shrink: 0;
+  min-width: 100px; /* Impedisce al badge di restringersi troppo */
+}
+
+.badge {
+  display: inline-flex;     /* Sostituito inline-block con inline-flex */
+  align-items: center;      /* Allinea verticalmente pallino e testo al centro */
+  gap: 0.4rem; 
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap; /* Impedisce al testo di andare a capo */
+}
+
+
+/* Corpo della Card */
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding: 1.25rem;
+}
+
+/* Ogni singolo blocco di dettaglio */
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+  min-width: 140px; 
+}
+
+.label {
+  font-size: 0.75rem;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.value {
+  font-size: 0.95rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+/* Sezione Pulsanti */
+.card-actions {
+  margin-top: auto; /* Spinge i pulsanti verso il basso */
+  padding: 1rem 1.25rem;
+  background-color: #f8fafc;
+  border-top: 1px solid #f0f2f5;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Pulsanti stile interfaccia allegata */
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: #0a1d56;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #07143a;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.btn-secondary:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* Stile base del pallino */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Varianti di colore del pallino */
+.dot-danger {
+  background-color: #ef4444; /* Rosso */
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.dot-warning {
+  background-color: #f5ca0b; /* Giallo/Arancione */
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.dot-success {
+  background-color: #10b981; /* Verde per il completato */
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.dot-default {
+  stroke: #0a1d56; /* Grigio di fallback */
+}
